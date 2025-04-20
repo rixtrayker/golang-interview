@@ -5,6 +5,17 @@
 ### 1. What are the basic components of Go's testing package?
 
 * **Answer:** The `testing` package provides:
+
+| Component | Description | Use Case |
+|-----------|-------------|----------|
+| testing.T | Unit test runner | Basic testing |
+| testing.B | Benchmark runner | Performance testing |
+| testing.M | Test main | Setup/teardown |
+| Helper functions | Logging, errors | Test output |
+| Table-driven tests | Multiple cases | Data-driven testing |
+| Coverage tools | Code coverage | Quality metrics |
+
+* **Key Features:**
     * `testing.T` for unit tests
     * `testing.B` for benchmarks
     * `testing.M` for test main
@@ -14,11 +25,16 @@
 
 ### 2. How do you write a basic unit test in Go?
 
-* **Answer:** Unit tests in Go:
-    * Are in files ending with `_test.go`
-    * Have functions starting with `Test`
-    * Take a `*testing.T` parameter
-    * Use `t.Error` or `t.Fatal` to report failures
+* **Answer:** Unit tests in Go follow specific conventions:
+
+| Convention | Description | Example |
+|------------|-------------|---------|
+| File naming | `_test.go` suffix | `math_test.go` |
+| Function naming | `Test` prefix | `TestAdd` |
+| Parameters | `*testing.T` | `func TestAdd(t *testing.T)` |
+| Error reporting | `t.Error`, `t.Fatal` | `t.Errorf("got %v, want %v", got, want)` |
+| Testing package | `testing` | `import "testing"` |
+
 * **Example:**
     ```go
     func TestAdd(t *testing.T) {
@@ -32,40 +48,33 @@
 ### 3. What are table-driven tests and why are they useful?
 
 * **Answer:** Table-driven tests use a slice of test cases to run the same test logic with different inputs and expected outputs.
+
+| Aspect | Description | Benefit |
+|--------|-------------|---------|
+| Code reuse | Single test function | DRY principle |
+| Test coverage | Multiple cases | Better coverage |
+| Maintenance | Centralized cases | Easy updates |
+| Readability | Clear structure | Self-documenting |
+| Error diagnosis | Specific cases | Easy debugging |
+
 * **Advantages:**
     * Reduces code duplication
     * Makes it easy to add new test cases
     * Provides clear test coverage
     * Makes test failures easier to diagnose
-* **Example:**
-    ```go
-    func TestAdd(t *testing.T) {
-        cases := []struct {
-            a, b, want int
-        }{
-            {1, 1, 2},
-            {2, 3, 5},
-            {0, 0, 0},
-            {-1, 1, 0},
-        }
-        
-        for _, tc := range cases {
-            got := Add(tc.a, tc.b)
-            if got != tc.want {
-                t.Errorf("Add(%d, %d) = %d; want %d", tc.a, tc.b, got, tc.want)
-            }
-        }
-    }
-    ```
 
 ### 4. How do you write benchmarks in Go?
 
-* **Answer:** Benchmarks:
-    * Are in files ending with `_test.go`
-    * Have functions starting with `Benchmark`
-    * Take a `*testing.B` parameter
-    * Use `b.N` for iteration count
-    * Use `b.ResetTimer()` to exclude setup time
+* **Answer:** Benchmarks follow specific patterns:
+
+| Pattern | Description | Example |
+|---------|-------------|---------|
+| Function naming | `Benchmark` prefix | `BenchmarkAdd` |
+| Parameters | `*testing.B` | `func BenchmarkAdd(b *testing.B)` |
+| Iteration count | `b.N` | `for i := 0; i < b.N; i++` |
+| Timer control | `b.ResetTimer()` | Exclude setup time |
+| Memory allocation | `b.ReportAllocs()` | Track allocations |
+
 * **Example:**
     ```go
     func BenchmarkAdd(b *testing.B) {
@@ -77,11 +86,16 @@
 
 ### 5. How do you write example tests in Go?
 
-* **Answer:** Example tests:
-    * Are in files ending with `_test.go`
-    * Have functions starting with `Example`
-    * Show up in package documentation
-    * Can include `// Output:` comments to verify output
+* **Answer:** Example tests serve as documentation and verification:
+
+| Feature | Description | Example |
+|---------|-------------|---------|
+| Function naming | `Example` prefix | `ExampleAdd` |
+| Output comments | `// Output:` | `// Output: 5` |
+| Documentation | Shows in godoc | Public examples |
+| Verification | Checks output | Ensures accuracy |
+| Package examples | `Example` | Package-level |
+
 * **Example:**
     ```go
     func ExampleAdd() {
@@ -92,11 +106,16 @@
 
 ### 6. How do you use test coverage in Go?
 
-* **Answer:** Test coverage:
-    * Use `go test -cover` for basic coverage
-    * Use `go test -coverprofile=coverage.out` to generate coverage profile
-    * Use `go tool cover -html=coverage.out` to view coverage in browser
-    * Use `go test -covermode=atomic` for concurrent tests
+* **Answer:** Test coverage tools provide insights into code testing:
+
+| Tool | Description | Command |
+|------|-------------|---------|
+| Basic coverage | Simple coverage | `go test -cover` |
+| Coverage profile | Detailed data | `go test -coverprofile=coverage.out` |
+| HTML report | Visual coverage | `go tool cover -html=coverage.out` |
+| Atomic coverage | Concurrent tests | `go test -covermode=atomic` |
+| Coverage threshold | Minimum coverage | Custom script |
+
 * **Example:**
     ```bash
     go test -coverprofile=coverage.out ./...
@@ -105,11 +124,16 @@
 
 ### 7. How do you handle test dependencies in Go?
 
-* **Answer:** Test dependencies:
-    * Use interfaces to decouple dependencies
-    * Use dependency injection
-    * Use test doubles (mocks, stubs, fakes)
-    * Use build tags to separate test files
+* **Answer:** Test dependencies require careful management:
+
+| Approach | Description | Use Case |
+|----------|-------------|----------|
+| Interfaces | Decoupling | Dependency injection |
+| Test doubles | Mocks, stubs | Isolated testing |
+| Build tags | Conditional compilation | Test-specific code |
+| Test helpers | Common setup | Code reuse |
+| Test fixtures | Test data | Consistent state |
+
 * **Example:**
     ```go
     type Database interface {
@@ -130,24 +154,36 @@
 ### 8. What is the difference between Mocks, Stubs, and Fakes in Go testing?
 
 * **Answer:** These are all types of test doubles used to replace real dependencies during testing:
-    * **Stub:** Provides canned answers to calls made during the test. It doesn't usually respond to anything outside what's programmed for the test. Often used for simple state verification (e.g., returning a specific value or error).
-    * **Fake:** Objects that have working implementations, but are simplified versions of the real dependency, often using in-memory data structures instead of external systems. They mimic the real object's behavior but are not suitable for production (e.g., an in-memory database instead of a real SQL database).
-    * **Mock:** Objects pre-programmed with expectations which form a specification of the calls they are expected to receive. They verify that the expected interactions occurred (e.g., asserting a specific method was called exactly once with specific arguments). Mocking libraries often help generate these.
+
+| Type | Description | Use Case |
+|------|-------------|----------|
+| Stub | Canned answers | Simple returns |
+| Fake | Working implementation | Complex behavior |
+| Mock | Expectation verification | Interaction testing |
+| Spy | Recorded calls | Call verification |
+| Dummy | Placeholder | Required parameter |
+
 * **When to Use:**
-    * Use **Stubs** for simple return value control.
-    * Use **Fakes** when you need more complex, stateful interactions that mimic the real dependency closely.
-    * Use **Mocks** when you need to verify *interactions* between your system under test and its dependencies (behavior verification).
-* **Go Context:** Go's interfaces make creating test doubles relatively straightforward. You can often create simple stubs or fakes by manually implementing the required interface. Mocking libraries (like `gomock` or `testify/mock`) can automate mock creation and expectation setting.
+    * Use **Stubs** for simple return value control
+    * Use **Fakes** when you need more complex, stateful interactions
+    * Use **Mocks** when you need to verify interactions
+    * Use **Spies** to record and verify method calls
+    * Use **Dummies** for required parameters you don't care about
 
 ## Intermediate Concepts
 
 ### 9. How do you test concurrent code in Go?
 
-* **Answer:** Testing concurrent code:
-    * Use `-race` flag to detect race conditions
-    * Use `sync.WaitGroup` to wait for goroutines
-    * Use channels for synchronization
-    * Use `testing.T.Parallel()` for parallel tests
+* **Answer:** Testing concurrent code requires special considerations:
+
+| Technique | Description | Use Case |
+|-----------|-------------|----------|
+| Race detection | `-race` flag | Data races |
+| Wait groups | Synchronization | Goroutine completion |
+| Channels | Communication | Message passing |
+| Parallel tests | `t.Parallel()` | Concurrent tests |
+| Timeouts | Context | Deadlock prevention |
+
 * **Example:**
     ```go
     func TestConcurrent(t *testing.T) {
@@ -171,11 +207,16 @@
 
 ### 10. How do you test HTTP handlers in Go?
 
-* **Answer:** Testing HTTP handlers:
-    * Use `net/http/httptest` package
-    * Create test requests with `httptest.NewRequest`
-    * Create test response recorder with `httptest.NewRecorder`
-    * Check response status, headers, body
+* **Answer:** HTTP handler testing requires specific tools:
+
+| Tool | Description | Use Case |
+|------|-------------|----------|
+| httptest | Test requests | Handler testing |
+| ResponseRecorder | Capture output | Response testing |
+| TestServer | Real server | Integration testing |
+| Client | HTTP client | API testing |
+| Middleware | Request/response | Filter testing |
+
 * **Example:**
     ```go
     func TestHandler(t *testing.T) {
@@ -196,11 +237,16 @@
 
 ### 11. How do you test database code in Go?
 
-* **Answer:** Testing database code:
-    * Use test databases or in-memory databases
-    * Use transactions for test isolation
-    * Clean up test data
-    * Use interfaces for database access
+* **Answer:** Database testing requires isolation and control:
+
+| Approach | Description | Use Case |
+|----------|-------------|----------|
+| In-memory DB | SQLite | Fast tests |
+| Test containers | Docker | Real DB testing |
+| Transactions | Rollback | Clean state |
+| Mock DB | Interface | Controlled behavior |
+| Fixtures | Test data | Known state |
+
 * **Example:**
     ```go
     func TestDB(t *testing.T) {
@@ -225,11 +271,16 @@
 
 ### 12. How do you implement custom test helpers in Go?
 
-* **Answer:** Custom test helpers:
-    * Use `t.Helper()` to mark helper functions
-    * Return errors instead of calling `t.Fatal`
-    * Use interfaces for flexibility
-    * Document expected behavior
+* **Answer:** Custom test helpers improve test organization:
+
+| Helper Type | Description | Use Case |
+|-------------|-------------|----------|
+| Setup/teardown | Environment | Test preparation |
+| Assertions | Common checks | Test validation |
+| Fixtures | Test data | State management |
+| Mocks | Test doubles | Dependency control |
+| Utilities | Common code | Code reuse |
+
 * **Example:**
     ```go
     func assertEqual(t *testing.T, got, want interface{}) {
@@ -242,11 +293,16 @@
 
 ### 13. How do you test time-dependent code in Go?
 
-* **Answer:** Testing time-dependent code:
-    * Use interfaces for time operations
-    * Use test clocks
-    * Use `time.After` for timeouts
-    * Use `time.Sleep` carefully
+* **Answer:** Time-dependent code requires special testing approaches:
+
+| Approach | Description | Use Case |
+|----------|-------------|----------|
+| Interface | Time abstraction | Controlled time |
+| Test clock | Mock time | Time manipulation |
+| Timeouts | Context | Deadline testing |
+| Sleep | Delays | Timing tests |
+| Ticker | Periodic events | Interval testing |
+
 * **Example:**
     ```go
     type Clock interface {
@@ -267,11 +323,16 @@
 
 ### 14. How do you test error conditions in Go?
 
-* **Answer:** Testing error conditions:
-    * Use table-driven tests
-    * Test both error and non-error cases
-    * Check error messages
-    * Use error wrapping
+* **Answer:** Error testing requires comprehensive coverage:
+
+| Approach | Description | Use Case |
+|----------|-------------|----------|
+| Table tests | Multiple cases | Error scenarios |
+| Error wrapping | Context | Error chains |
+| Error types | Custom errors | Specific handling |
+| Panic recovery | Exception handling | Crash prevention |
+| Error messages | Validation | User feedback |
+
 * **Example:**
     ```go
     func TestError(t *testing.T) {
@@ -296,11 +357,16 @@
 
 ### 15. How do you implement test fixtures in Go?
 
-* **Answer:** Test fixtures:
-    * Use `TestMain` for setup/teardown
-    * Use build tags for different environments
-    * Use temporary directories
-    * Use environment variables
+* **Answer:** Test fixtures provide consistent test environments:
+
+| Fixture Type | Description | Use Case |
+|--------------|-------------|----------|
+| TestMain | Global setup | Package-level |
+| Build tags | Conditional code | Environment-specific |
+| Temp directories | File system | File operations |
+| Environment vars | Configuration | Runtime settings |
+| Database state | Data setup | DB testing |
+
 * **Example:**
     ```go
     var db *sql.DB
@@ -325,11 +391,16 @@
 
 ### 16. How do you test network code in Go?
 
-* **Answer:** Testing network code:
-    * Use `net.Listen` for test servers
-    * Use `net.Dial` for test clients
-    * Use `context` for timeouts
-    * Use `net.Listener` for port selection
+* **Answer:** Network testing requires careful setup:
+
+| Approach | Description | Use Case |
+|----------|-------------|----------|
+| Test server | Local server | Service testing |
+| Test client | HTTP client | Client testing |
+| Timeouts | Context | Network delays |
+| Port selection | Dynamic ports | Conflict avoidance |
+| Protocol testing | Custom protocols | Network protocols |
+
 * **Example:**
     ```go
     func TestServer(t *testing.T) {
@@ -359,11 +430,16 @@
 
 ### 17. How do you test file operations in Go?
 
-* **Answer:** Testing file operations:
-    * Use `ioutil.TempDir` and `ioutil.TempFile`
-    * Use `os.RemoveAll` for cleanup
-    * Use `os.Chdir` carefully
-    * Use file system interfaces
+* **Answer:** File testing requires temporary resources:
+
+| Approach | Description | Use Case |
+|----------|-------------|----------|
+| Temp files | Temporary storage | File operations |
+| Temp directories | Workspace | Directory operations |
+| Cleanup | Resource management | Memory safety |
+| File system | Interface | Mock filesystem |
+| Permissions | Access control | Security testing |
+
 * **Example:**
     ```go
     func TestFile(t *testing.T) {
