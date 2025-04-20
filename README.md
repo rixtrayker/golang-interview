@@ -1,5 +1,7 @@
 # Go Interview Questions Book
 
+> A comprehensive, open-source collection of Go programming interview questions and answers, designed to help developers prepare for technical interviews and deepen their understanding of the Go programming language. This book covers everything from basic concepts to advanced topics, with detailed explanations, code examples, and best practices.
+
 A comprehensive collection of Go programming interview questions organized by topic and difficulty level. This project uses [mdBook](https://rust-lang.github.io/mdBook/) to generate a beautiful, searchable book in multiple formats.
 
 ## 📚 Book Overview
