@@ -364,4 +364,31 @@ This section covers questions related to Go development workflow, building, depl
 
         // ... do work ...
     }
-    ``` 
+    ```
+
+### Comparison Table: Development and Deployment Features Across Languages
+
+| Feature | Go | Java | Python | Node.js |
+|---------|----|------|--------|---------|
+| Package Manager | Go Modules | Maven/Gradle | pip | npm |
+| Build System | go build | Maven/Gradle | setuptools | npm scripts |
+| Binary Distribution | Single binary | JAR | Wheel | Node modules |
+| Container Support | Excellent | Good | Good | Good |
+| Cross-Compilation | Built-in | Limited | Limited | Limited |
+| Dependency Management | Go Modules | Maven/Gradle | pip | npm/yarn |
+| CI/CD Integration | Excellent | Good | Good | Good |
+| Deployment Size | Small | Large | Medium | Medium |
+| Runtime Requirements | None | JVM | Python | Node.js |
+| Hot Reloading | 3rd party | Built-in | Built-in | Built-in |
+| Version Management | go install | SDKMAN | pyenv | nvm |
+
+### Comparison Questions
+
+1. How does Go's single binary deployment model compare to Java's JAR-based deployment?
+2. What are the advantages and disadvantages of Go's built-in cross-compilation compared to other languages' approaches?
+3. Compare Go's dependency management (Go Modules) with npm and pip in terms of reliability and ease of use.
+4. How does Go's container support compare to other languages in terms of image size and startup time?
+5. What are the trade-offs between Go's zero runtime requirements and other languages' runtime environments?
+6. Compare Go's CI/CD integration capabilities with other languages' tooling.
+7. How does Go's build system compare to Maven/Gradle in terms of flexibility and features?
+8. What are the advantages and disadvantages of Go's approach to version management compared to tools like nvm and pyenv? 

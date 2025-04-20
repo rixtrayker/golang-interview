@@ -137,4 +137,30 @@ Monitoring and observability:
 * Error tracking
 * Slow query logging
 * Distributed tracing
-* Health checks 
+* Health checks
+
+### Comparison Table: Database Features Across Languages
+
+| Feature | Go | Java | Python | Node.js |
+|---------|----|------|--------|---------|
+| Standard Library Support | `database/sql` | JDBC | DB-API | None |
+| Popular ORMs | GORM | Hibernate | SQLAlchemy | Sequelize |
+| Connection Pooling | Built-in | Built-in | 3rd party | 3rd party |
+| Transaction Support | Yes | Yes | Yes | Yes |
+| Prepared Statements | Yes | Yes | Yes | Yes |
+| Migration Tools | Goose, GORM | Flyway | Alembic | Knex |
+| Query Builders | Squirrel | JOOQ | SQLAlchemy Core | Knex |
+| Connection Management | Manual | Connection Pool | Context Manager | Promise-based |
+| Error Handling | Return values | Exceptions | Exceptions | Callbacks/Promises |
+| Type Safety | Strong | Strong | Weak | Weak |
+
+### Comparison Questions
+
+1. How does Go's `database/sql` package compare to JDBC in terms of features and ease of use?
+2. What are the advantages and disadvantages of Go's approach to database connections compared to Python's context managers?
+3. Compare Go's ORM options (GORM) with SQLAlchemy in terms of features and performance.
+4. How does Go's error handling in database operations compare to exception-based approaches in other languages?
+5. What are the trade-offs between Go's manual connection management and connection pooling in other languages?
+6. Compare Go's approach to database migrations with tools like Flyway and Alembic.
+7. How does Go's type safety in database operations compare to dynamically typed languages?
+8. What are the advantages and disadvantages of Go's standard library approach to databases compared to framework-based approaches? 

@@ -114,4 +114,30 @@ Custom profiling:
 * Use `expvar` package
 * Create custom profilers
 * Implement distributed tracing
-* Monitor system resources 
+* Monitor system resources
+
+### Comparison Table: Performance Optimization Features Across Languages
+
+| Feature | Go | Java | Python | C++ |
+|---------|----|------|--------|-----|
+| Built-in Profiling | pprof | JProfiler | cProfile | gprof |
+| Memory Management | GC | GC | GC | Manual |
+| Concurrency Model | Goroutines | Threads | GIL | Threads |
+| Compilation | Ahead-of-time | JIT | Interpreted | Ahead-of-time |
+| Memory Safety | Yes | Yes | Yes | No |
+| Zero-cost Abstractions | Limited | Limited | No | Yes |
+| Inline Assembly | Yes | No | No | Yes |
+| SIMD Support | Limited | Limited | No | Yes |
+| Cache Optimization | Manual | JVM | Limited | Manual |
+| Binary Size | Small | Large | N/A | Small |
+
+### Comparison Questions
+
+1. How does Go's garbage collector compare to Java's in terms of performance and predictability?
+2. What are the advantages and disadvantages of Go's goroutine-based concurrency compared to Java's thread-based model for performance optimization?
+3. Compare Go's profiling tools (pprof) with Python's profiling tools in terms of features and ease of use.
+4. How does Go's ahead-of-time compilation model compare to Java's JIT compilation for performance optimization?
+5. What are the trade-offs between Go's memory safety and C++'s manual memory management in terms of performance?
+6. Compare Go's approach to zero-cost abstractions with C++'s template system.
+7. How does Go's SIMD support compare to C++'s in terms of performance optimization capabilities?
+8. What are the advantages and disadvantages of Go's binary size compared to other languages? 

@@ -333,3 +333,29 @@
         * Propagate contexts properly
         * Handle cancellation gracefully
         * Use context.WithTimeout 
+
+### Comparison Table: Common Pitfalls Across Languages
+
+| Pitfall | Go | Java | Python | JavaScript |
+|---------|----|------|--------|------------|
+| Nil/Null Handling | Interface nil | NullPointerException | NoneType | undefined/null |
+| Memory Leaks | Goroutine leaks | Thread leaks | Reference cycles | Closure leaks |
+| Concurrency Issues | Race conditions | Deadlocks | GIL limitations | Callback hell |
+| Type System | Interface nil | Null safety | Dynamic typing | Type coercion |
+| Error Handling | Panic/recover | Exceptions | Exceptions | Try/catch |
+| Memory Management | GC pauses | GC pauses | Reference counting | GC pauses |
+| Scope Issues | Closure variables | Lambda capture | Global scope | Hoisting |
+| Type Conversion | Interface assertion | Casting | Dynamic | Type coercion |
+| Resource Cleanup | defer | try-with-resources | context managers | finally |
+| Concurrency Primitives | Channels | Locks | Async/await | Promises |
+
+### Comparison Questions
+
+1. How does Go's interface nil behavior compare to null handling in other languages?
+2. What are the advantages and disadvantages of Go's goroutine leaks compared to thread leaks in Java?
+3. Compare Go's race conditions with Python's GIL limitations in terms of debugging difficulty.
+4. How does Go's type system help prevent common pitfalls compared to dynamically typed languages?
+5. What are the trade-offs between Go's panic/recover and exception-based error handling?
+6. Compare Go's memory management pitfalls with manual memory management in C++.
+7. How does Go's closure behavior compare to JavaScript's closure-related issues?
+8. What are the advantages and disadvantages of Go's resource cleanup (defer) compared to other languages' approaches? 

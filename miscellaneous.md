@@ -238,4 +238,30 @@
         func (gc *CustomGC) Collect() {
             // Implement collection logic
         }
-        ``` 
+        ```
+
+### Comparison Table: Miscellaneous Features Across Languages
+
+| Feature | Go | Java | Python | C++ |
+|---------|----|------|--------|-----|
+| Foreign Function Interface | CGO | JNI | ctypes | Direct |
+| Plugin System | Built-in | OSGi | importlib | Dynamic Loading |
+| Package Management | Go Modules | Maven/Gradle | pip | CMake/Conan |
+| Cross-Platform Support | Excellent | Good | Good | Excellent |
+| Standard Library | Comprehensive | Comprehensive | Comprehensive | Limited |
+| Documentation | Godoc | Javadoc | Docstrings | Doxygen |
+| Error Handling | Return values | Exceptions | Exceptions | Exceptions |
+| Memory Management | GC | GC | GC | Manual |
+| Build System | go build | Maven/Gradle | setuptools | CMake |
+| Debugging Tools | Delve | JDB | pdb | gdb |
+
+### Comparison Questions
+
+1. How does Go's CGO compare to Java's JNI in terms of ease of use and performance?
+2. What are the advantages and disadvantages of Go's plugin system compared to Python's import system?
+3. Compare Go's package management (Go Modules) with other languages' package managers in terms of reliability.
+4. How does Go's cross-platform support compare to other languages in terms of build complexity?
+5. What are the trade-offs between Go's comprehensive standard library and C++'s more limited standard library?
+6. Compare Go's documentation system (Godoc) with other languages' documentation tools.
+7. How does Go's error handling approach compare to exception-based systems in other languages?
+8. What are the advantages and disadvantages of Go's garbage collection compared to manual memory management in C++? 

@@ -49,27 +49,31 @@ JSON handling in Go:
 
 ### 4. How do you create a basic HTTP server in Go?
 
-* **Answer:** The `net/http` package provides everything needed to create HTTP servers. The basic components are:
-    * `http.HandleFunc()` or `http.Handle()` for routing
-    * `http.ListenAndServe()` to start the server
-* **Example:**
-    ```go
-    func main() {
-        http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-            fmt.Fprintf(w, "Hello, World!")
-        })
-        
-        http.HandleFunc("/api/health", func(w http.ResponseWriter, r *http.Request) {
-            w.Header().Set("Content-Type", "application/json")
-            json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
-        })
-        
-        fmt.Println("Server starting on :8080")
-        if err := http.ListenAndServe(":8080", nil); err != nil {
-            log.Fatal(err)
-        }
-    }
-    ```
+### Comparison Table: Web Development Features Across Languages
+
+| Feature | Go | Node.js | Python | Java |
+|---------|----|---------|--------|------|
+| Built-in HTTP Server | Yes | Yes | No | Yes |
+| Popular Frameworks | Gin, Echo | Express | Django, Flask | Spring |
+| Performance | High | High | Medium | High |
+| Concurrency Model | Goroutines | Event Loop | WSGI/ASGI | Threads |
+| Memory Usage | Low | Medium | Medium | High |
+| Learning Curve | Moderate | Low | Low | High |
+| Deployment | Binary | Runtime | Runtime | Runtime |
+| Hot Reloading | 3rd party | Built-in | Built-in | 3rd party |
+| API Documentation | Swagger | Swagger | Swagger | Swagger |
+| WebSocket Support | Yes | Yes | Yes | Yes |
+
+### Comparison Questions
+
+1. How does Go's built-in HTTP server compare to Node.js's in terms of performance and ease of use?
+2. What are the advantages and disadvantages of Go's goroutine-based concurrency model compared to Node.js's event loop for web applications?
+3. Compare Go's web frameworks (Gin, Echo) with Python's Django and Flask in terms of features and development speed.
+4. How does Go's binary deployment model compare to runtime-based deployment in other languages?
+5. What are the trade-offs between Go's static typing and dynamic typing in web development?
+6. Compare Go's approach to middleware with Express.js middleware. Which is more flexible and why?
+7. How does Go's memory management compare to Java's in web applications?
+8. What are the advantages and disadvantages of Go's standard library approach compared to framework-heavy approaches in other languages?
 
 ### 5. What is the difference between `http.Handle` and `http.HandleFunc`?
 

@@ -48,7 +48,7 @@
     * Example:
         ```go
         type Number interface {
-            int | float64
+            ~int | ~float64
         }
         
         func Sum[T Number](numbers []T) T {

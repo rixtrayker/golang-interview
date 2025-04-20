@@ -456,4 +456,27 @@
         
         // Test file operations
     }
-    ``` 
+    ```
+
+### Comparison Table: Testing Frameworks Across Languages
+
+| Feature | Go | Java | Python | JavaScript |
+|---------|----|------|--------|------------|
+| Built-in Testing | Yes | JUnit | unittest | None |
+| Test Discovery | Automatic | Manual | Automatic | Manual |
+| Benchmarking | Built-in | JMH | timeit | Performance API |
+| Mocking | Manual/3rd party | Mockito | unittest.mock | Jest |
+| Coverage Tools | Built-in | JaCoCo | coverage | Istanbul |
+| Parallel Testing | Yes | Yes | Yes | Yes |
+| Test Organization | Package-based | Class-based | Module-based | File-based |
+| Assertion Style | Manual | Assertions | Assertions | Expect/Should |
+
+### Comparison Questions
+
+1. How does Go's built-in testing framework compare to JUnit in terms of features and ease of use?
+2. What are the advantages and disadvantages of Go's manual assertions compared to assertion libraries in other languages?
+3. Compare Go's approach to test organization with Python's unittest framework. Which is more maintainable for large projects?
+4. How does Go's built-in benchmarking compare to performance testing tools in other languages?
+5. What are the trade-offs between Go's package-based test organization and class-based organization in Java?
+6. How does Go's approach to mocking compare to dedicated mocking frameworks in other languages?
+7. Compare the test coverage tools across these languages. Which provides the most useful insights for developers? 

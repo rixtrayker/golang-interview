@@ -48,10 +48,11 @@
 | Closed | Signals completion | Broadcast patterns |
 
 * **Key Characteristics:**
-    * Typed: `chan T` for type `T`
-    * Can be buffered or unbuffered
-    * Send and receive operations block until the other side is ready
-    * Can be closed to signal completion
+    * Channels are first-class citizens in Go
+    * They can be buffered or unbuffered
+    * They support directional operations (send-only, receive-only)
+    * They can be closed to signal completion
+    * They provide built-in synchronization
 
 ### 3. What is the difference between buffered and unbuffered channels?
 
@@ -464,3 +465,25 @@ Mitigation strategies:
 * Design for concurrency
 * Use non-blocking operations
 * Monitor and profile 
+
+### Comparison Table: Concurrency Models Across Languages
+
+| Feature | Go | Java | Python | Rust |
+|---------|----|------|--------|------|
+| Concurrency Model | Goroutines + Channels | Threads + Locks | Threads + Async/Await | Async/Await + Channels |
+| Memory Model | Shared Memory | Shared Memory | GIL (CPython) | Ownership |
+| Synchronization | Channels | Locks/Semaphores | Locks/Async | Channels/Arc |
+| Error Handling | Panic/Recover | Exceptions | Exceptions | Result/Option |
+| Deadlock Prevention | Channel-based | Manual | Manual | Compile-time |
+| Scalability | High | Medium | Low (GIL) | High |
+| Learning Curve | Moderate | High | Low | High |
+
+### Comparison Questions
+
+1. How does Go's channel-based concurrency model compare to Java's thread-based model in terms of developer productivity and error prevention?
+2. What are the advantages and disadvantages of Go's goroutines compared to Python's async/await pattern?
+3. How does Go's approach to shared memory differ from Rust's ownership model in concurrent programming?
+4. Compare the error handling strategies in concurrent code between Go and Java. Which is more robust and why?
+5. How does Go's channel-based communication compare to message passing in other languages like Erlang?
+6. What are the trade-offs between Go's cooperative scheduling and preemptive scheduling in other languages?
+7. How does Go's approach to deadlock prevention compare to Rust's compile-time checks? 

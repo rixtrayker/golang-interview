@@ -73,6 +73,7 @@ Questions are organized from **basic** to **expert** level within each topic. Ea
 - **Benchmarking**
 - **Testing concurrent code**
 - **Integration testing**
+- **Framework comparison** (Go vs Java, Python, JavaScript)
 
 ### 🔴 Redis
 - **Caching patterns**
@@ -80,12 +81,15 @@ Questions are organized from **basic** to **expert** level within each topic. Ea
 - **Pub/Sub messaging**
 - **Transactions**
 - **High availability**
+- **Client package comparison** (go-redis/redis, redigo, radix, rueidis)
+- **Cross-language comparison** (Go vs Java, Python, Node.js)
 
 ### 📊 Development and Deployment
 - **Development workflow**
 - **Building** and **packaging**
 - **Deployment strategies**
 - **Monitoring** and **observability**
+- **Tool comparison** (Go vs Java, Python, Node.js)
 
 ### 📦 General Topics
 - **Security best practices**
@@ -93,6 +97,115 @@ Questions are organized from **basic** to **expert** level within each topic. Ea
 - **File operations**
 - **Build tools**
 - **Package management**
+- **Language feature comparison** (Go vs Java, Python, C++)
+
+## 🔄 Comparison Sections
+
+Each topic includes comprehensive comparison tables and questions covering:
+
+1. **Feature Comparison**
+   - Detailed feature matrices
+   - Performance characteristics
+   - API design differences
+   - Implementation approaches
+
+2. **Use Case Analysis**
+   - Best practices for different scenarios
+   - Performance trade-offs
+   - Development considerations
+   - Maintenance implications
+
+3. **Cross-Language Comparisons**
+   - Language-specific implementations
+   - Performance benchmarks
+   - API design patterns
+   - Error handling approaches
+
+4. **Best Practices**
+   - Implementation guidelines
+   - Performance optimization
+   - Security considerations
+   - Scalability patterns
+
+## 📊 Use Cases and Real-World Examples
+
+### 🏢 Enterprise Applications
+- **Microservices Architecture**
+  - Uber's Go Microservices
+  - Twitch's Go Services
+  - Cloudflare's Edge Computing
+- **High-Performance Systems**
+  - Docker's Container Runtime
+  - Kubernetes Components
+  - Prometheus Monitoring
+
+### 🌐 Web Services
+- **API Gateways**
+  - Kong Gateway
+  - Traefik Proxy
+  - Envoy Proxy
+- **Real-time Systems**
+  - WebSocket Servers
+  - Chat Applications
+  - Live Streaming
+
+### 🔄 Data Processing
+- **ETL Pipelines**
+  - Data Transformation
+  - Stream Processing
+  - Batch Processing
+- **Message Queues**
+  - NATS
+  - NSQ
+  - RabbitMQ
+
+## 📚 Learning Resources
+
+### 📺 YouTube Playlists
+- [Go Programming Language](https://www.youtube.com/playlist?list=PLzMcBGfZo4-mtY_SE3HuzQJzuj4VlUG0q) - Tech With Tim
+- [Go Tutorial for Beginners](https://www.youtube.com/playlist?list=PLRAV69dS1uWQGDQoBYMZWKjzuhCaOnBpa) - Hitesh Choudhary
+- [Go Concurrency Patterns](https://www.youtube.com/playlist?list=PLoILbKo9rG3skRCrG5YXQvFZb5Zf8mmWv) - Rob Pike
+- [Advanced Go Programming](https://www.youtube.com/playlist?list=PLzUGFf4GhXBL4GHXVcMMvzgtO8-WEJIoY) - Ardan Labs
+
+### 📖 Books and Papers
+- **Books**
+  - "The Go Programming Language" by Alan A. A. Donovan and Brian W. Kernighan
+  - "Concurrency in Go" by Katherine Cox-Buday
+  - "Go in Action" by William Kennedy, Brian Ketelsen, and Erik St. Martin
+  - "Learning Go" by Jon Bodner
+
+- **Research Papers**
+  - [The Go Memory Model](https://go.dev/ref/mem)
+  - [Go Scheduler: Implementing Language with Lightweight Concurrency](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit)
+  - [Go GC: Latency Problem Solved](https://blog.golang.org/ismmkeynote)
+
+### 🎓 Online Courses
+- [Go: The Complete Developer's Guide](https://www.udemy.com/course/go-the-complete-developers-guide/) - Udemy
+- [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/) - Free Online Book
+- [Gophercises](https://gophercises.com/) - Free Coding Exercises
+- [Go by Example](https://gobyexample.com/) - Hands-on Examples
+
+### 📰 Blogs and Articles
+- [The Go Blog](https://blog.golang.org/)
+- [Ardan Labs Blog](https://www.ardanlabs.com/blog/)
+- [Dave Cheney's Blog](https://dave.cheney.net/)
+- [Gopher Academy Blog](https://blog.gopheracademy.com/)
+
+### 🛠️ Tools and Frameworks
+- **Development Tools**
+  - [Delve](https://github.com/go-delve/delve) - Debugger
+  - [gopls](https://github.com/golang/tools/tree/master/gopls) - Language Server
+  - [golangci-lint](https://github.com/golangci/golangci-lint) - Linter
+
+- **Testing Tools**
+  - [testify](https://github.com/stretchr/testify) - Testing Toolkit
+  - [ginkgo](https://github.com/onsi/ginkgo) - Testing Framework
+  - [gomock](https://github.com/golang/mock) - Mocking Framework
+
+- **Performance Tools**
+  - [pprof](https://github.com/google/pprof) - Profiler
+  - [trace](https://golang.org/pkg/runtime/trace/) - Execution Tracer
+  - [benchstat](https://godoc.org/golang.org/x/perf/cmd/benchstat) - Benchmark Statistics
 
 ## 🤝 Contributing
 
