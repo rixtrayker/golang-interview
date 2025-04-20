@@ -1,0 +1,30 @@
+[book]
+title = "Go Interview Questions"
+authors = ["Go Interview Questions Contributors"]
+description = "A comprehensive collection of Go programming interview questions organized by topic and difficulty level."
+language = "en"
+multilingual = false
+src = "."
+
+[build]
+build-dir = "book"
+create-missing = true
+
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/yourusername/golang-interview-questions"
+git-repository-icon = "fa-github"
+
+[output.pdf]
+paper-size = "a4"
+font-size = 12
+line-height = 1.5
+margin = {
+    top = 20,
+    bottom = 20,
+    left = 20,
+    right = 20
+}
+
+[output.epub]
+stylesheet = true 

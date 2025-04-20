@@ -1,0 +1,40 @@
+name: Release Book
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Install mdBook and plugins
+        run: |
+          cargo install mdbook
+          cargo install mdbook-epub
+          cargo install mdbook-pdf
+
+      - name: Build book
+        run: |
+          mdbook build
+          mdbook epub
+          mdbook pdf
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            book/go-interview-questions.pdf
+            book/go-interview-questions.epub
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
