@@ -14,6 +14,13 @@ A comprehensive collection of Go programming interview questions organized by to
 - [🔴 Redis](redis.md) - **Caching** and **messaging**
 - [📊 Development & Deployment](development-deployment.md) - **CI/CD** and **monitoring**
 - [❓ General Questions](general-questions.md) - **Miscellaneous** topics
+- [📜 Official Go Resources](#official-go-resources) - **Documentation** and **guides**
+- [📺 YouTube Playlists & Channels](#youtube-playlists--channels) - **Video tutorials** and **talks**
+- [📖 Books and Papers](#books-and-papers) - **Learning materials** and **research**
+- [🎓 Online Courses & Interactive Learning](#online-courses--interactive-learning) - **Hands-on practice**
+- [📰 Blogs and Articles](#blogs-and-articles) - **News** and **insights**
+- [🤝 Communities & Forums](#communities--forums) - **Discussion** and **support**
+- [🛠️ Tools and Frameworks](#tools-and-frameworks) - **Development** and **testing tools**
 
 ## 📋 Organization
 
