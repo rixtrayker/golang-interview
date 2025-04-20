@@ -14,7 +14,7 @@ This book is designed to help you prepare for Go programming interviews and deep
 - **Students** learning Go programming
 - **Professionals** transitioning to Go from other languages
 
-### �� Main Topics
+### 📑 Main Topics
 
 1. **[Core Language](src/core-language/core-language.md)**
    - Type system and interfaces
