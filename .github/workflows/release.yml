@@ -15,6 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set GitHub username
+        run: echo "GITHUB_USERNAME=rixtrayker" >> $GITHUB_ENV
+
       - name: Cache Rust dependencies
         uses: actions/cache@v3
         with:
