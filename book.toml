@@ -5,6 +5,7 @@ description = "A comprehensive collection of Go programming interview questions 
 language = "en"
 multilingual = false
 src = "."
+cover-image = "Book-Cover.png"
 
 [build]
 build-dir = "book"
@@ -14,6 +15,11 @@ create-missing = true
 mathjax-support = true
 git-repository-url = "https://github.com/yourusername/golang-interview-questions"
 git-repository-icon = "fa-github"
+theme = "ayu"
+default-theme = "light"
+preferred-dark-theme = "ayu"
+additional-css = ["custom.css"]
+additional-js = ["custom.js"]
 
 [output.pdf]
 paper-size = "a4"
@@ -23,6 +29,16 @@ margin.top = 20
 margin.bottom = 20
 margin.left = 20
 margin.right = 20
+header-template = """
+<div style="width: 100%; text-align: center; font-size: 10pt;">
+    <span class="title"></span>
+</div>
+"""
+footer-template = """
+<div style="width: 100%; text-align: center; font-size: 10pt;">
+    <span class="pageNumber"></span>
+</div>
+"""
 
 [output.epub]
 stylesheet = true 
