@@ -4,37 +4,65 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'src/**'
+      - 'book.toml'
+      - '.github/workflows/release.yml'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Cache Rust dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
+          profile: minimal
+
+      - name: Cache mdBook installation
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo/bin/mdbook*
+          key: ${{ runner.os }}-mdbook-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mdbook-
 
       - name: Install mdBook and plugins
+        if: steps.cache-mdbook.outputs.cache-hit != 'true'
         run: |
-          cargo install mdbook
-          cargo install mdbook-epub
-          cargo install mdbook-pdf
+          cargo install mdbook --no-default-features
+          cargo install mdbook-epub --no-default-features
+          cargo install mdbook-pdf --no-default-features
 
       - name: Build book
         run: |
           mdbook build
-          mdbook epub
-          mdbook pdf
+          mdbook epub &
+          mdbook pdf &
+          wait
 
       - name: Create Release
-        id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: |
             book/go-interview-questions.pdf
             book/go-interview-questions.epub
           generate_release_notes: true
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
