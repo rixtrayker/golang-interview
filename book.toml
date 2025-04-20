@@ -4,7 +4,7 @@ authors = ["Go Interview Questions Contributors"]
 description = "A comprehensive collection of Go programming interview questions organized by topic and difficulty level."
 language = "en"
 multilingual = false
-src = "."
+src = "src"
 cover-image = "Book-Cover.png"
 
 [build]
